@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 packaging = "*"
+ttkbootstrap = "*"
+pyyaml = "*"
 
 [dev-packages]
 

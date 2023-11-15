@@ -1,6 +1,28 @@
 import tkinter as tk
-from core.theme import Theme
-from core.widgets.search_entry import SearchEntry
+from core.ui.widgets import SearchEntry
+from core.ui.theme import (Theme, Font)
+
+
+class GoalPage(tk.Frame):
+    def __init__(self, master, *args, **kwargs):
+        super().__init__(master, *args, **kwargs)
+        self.master = master
+
+        self.configure(
+            bg=Theme.BACKGROUND_PRIMARY
+        )
+
+        self.goal_label = tk.Label(
+            self,
+            text='Test goal label',
+            font=Font.GOALVIEW_NAME,
+            bg=Theme.BACKGROUND_PRIMARY
+        )
+        self.goal_label.pack(
+            fill=tk.X,
+            pady=20,
+            # anchor=tk.N
+        )
 
 
 class SideBar(tk.Frame):
@@ -10,23 +32,23 @@ class SideBar(tk.Frame):
 
         self.search_entry = SearchEntry(
             self,
-            hint_text='Search'
+            hint_text='Search',
+            bg=Theme.BACKGROUND_SECONDARY
         )
-        self.search_entry.pack()
-
-        self.configure(
-            background=Theme.SECONDARY_BACKGROUND
+        self.search_entry.pack(
+            fill=tk.X,
+            padx=10,
+            pady=10
         )
 
 
-class MainWindow(tk.Frame):
+class MainPage(tk.Frame):
     def __init__(self, root, *args, **kwargs):
         super().__init__(root, *args, **kwargs)
         self.root = root
-        self._min_width = root.root_geometry
 
         self.configure(
-            background=Theme.BACKGROUND
+            bg=Theme.BACKGROUND_PRIMARY
         )
 
         self.side_bar = SideBar(self)
@@ -35,9 +57,11 @@ class MainWindow(tk.Frame):
             fill=tk.Y
         )
 
-    @property
-    def root_geometry(self):
-        return self.root.root_geometry
+        self.goal_view = GoalPage(self)
+        self.goal_view.pack(
+            expand=True,
+            fill=tk.BOTH
+        )
 
 
 

@@ -1,33 +1,13 @@
-import tkinter as tk
-from core.widgets import MainWindow
+from core.ui import AppWindow
+from core.handlers import DataHandler
 
 
-class App(tk.Tk):
+class App:
     def __init__(self):
-        super().__init__()
-
-        self.title('test')
-        self.geometry('800x600')
-        self.update()
-
-        self.main_window = MainWindow(self)
-        self.main_window.pack(
-            expand=True,
-            fill=tk.BOTH
-        )
-
-    @property
-    def root_geometry(self):
-        return self.winfo_width(), self.winfo_height()
+        self.app_window = AppWindow()
 
     def run(self):
-        self.mainloop()
-
-
-
-
-
-
+        self.app_window.launch()
 
 
 

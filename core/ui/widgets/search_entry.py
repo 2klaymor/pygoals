@@ -1,5 +1,5 @@
 import tkinter as tk
-from core.theme import Theme
+from core.ui.theme import (Theme, Font)
 
 
 class SearchEntry(tk.Entry):
@@ -7,26 +7,30 @@ class SearchEntry(tk.Entry):
         super().__init__(master, *args, **kwargs)
 
         if hint_text:
-            self.hint_text = hint_text
+            self.hint = hint_text
             self.hint_visible = True
 
             for seq in ('<FocusIn>', '<FocusOut>'):
                 self.bind(seq, self._switch_visibility_of_hint)
 
-            self.configure(fg=Theme.TEXT_HINT)
-            self.insert(0, self.hint_text)
+            self.configure(
+                fg=Theme.FONT_HINT,
+                bg=Theme.BACKGROUND_PRIMARY,
+                font=Font.SIDEBAR_SEARCH
+            )
+            self.insert(0, self.hint)
 
     def _switch_visibility_of_hint(self, *args):
         if self.hint_visible:
             self.delete(0, tk.END)
             self.configure(
-                fg=Theme.TEXT
+                fg=Theme.FONT_PRIMARY
             )
             self.hint_visible = False
-        else:
-            self.insert(0, self.hint_text)
+        elif not (self.get() or self.get() == self.hint):
+            self.insert(0, self.hint)
             self.configure(
-                fg=Theme.TEXT_HINT
+                fg=Theme.FONT_HINT
             )
             self.hint_visible = True
 
