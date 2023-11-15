@@ -1,32 +1,30 @@
-import yaml
-from yaml.loader import FullLoader
-from functools import reduce
+import json
+import os
 
 
 class DataHandler:
-    data_path = 'data/sample.yaml'
+    def __init__(self, app):
+        self.app = app
+        self.data_path = app.data_path
 
-    @staticmethod
-    def update_goal(username, goal):
-        with open(DataHandler.data_path, 'r') as f:
-            data = yaml.load(f, FullLoader)
+    @property
+    def data_exists(self):
+        return os.path.exists(self.data_path)
 
-        # seq =
-        reduce(data.__setitem__, [])
+    def write_data(self, data=None):
+        if not data:
+            data = self.app.data
+        with open(self.data_path, 'w') as d:
+            json.dump(data, d)
 
-    @staticmethod
-    def get_goals(username):
-        with open(DataHandler.data_path, 'r') as f:
-            data = yaml.load(f, FullLoader)
-        return data[username]
+    def create_data(self):
+        self.write_data({})
 
-    @staticmethod
     def load_data(self):
-        with open(self.data_path, 'r') as f:
-            data = yaml.load(f, FullLoader)
-        return data
+        if not self.data_exists:
+            self.create_data()
 
-    @staticmethod
-    def write_data(self, data):
-        with open(DataHandler.data_path, 'w') as f:
-            yaml.dump(data, f)
+        with open(self.data_path, 'r') as d:
+            data = json.load(d)
+
+        return data

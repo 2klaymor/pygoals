@@ -1,5 +1,4 @@
 import dataclasses
-import ttkbootstrap as tb
 
 
 @dataclasses.dataclass

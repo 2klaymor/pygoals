@@ -1,1 +1,1 @@
-from core.ui.app_window import AppWindow
+from core.ui.app_window import Window
