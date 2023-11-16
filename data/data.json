@@ -1,25 +1,24 @@
 {
   "user": "2klaymor",
-  "goals": {
-    "0": {
-      "name": "Do chores",
-      "tasks": {
-        "0": {
+  "goals": [
+    { "name": "Do chores",
+      "tasks": [
+        {
           "text": "Clean dishes",
           "completed": false,
           "due date": null
         },
-        "1": {
+        {
           "text": "Clean up the room",
           "completed": true,
           "due date": null
         },
-        "2": {
+        {
           "text": "Do homework",
           "completed": false,
           "due date": "2023-11-25"
         }
-      }
+      ]
     }
-  }
+  ]
 }

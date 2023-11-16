@@ -1,5 +1,5 @@
 import tkinter as tk
-from core.ui.theme import (Theme, Font)
+import core
 from pprint import pprint
 
 
@@ -9,13 +9,13 @@ class GoalView(tk.Frame):
         self.master = master
 
         self.configure(
-            bg=Theme.BACKGROUND_PRIMARY
+            bg=core.ui.theme.BACKGROUND_PRIMARY
         )
 
         self.goal_label = tk.Label(
             self,
-            font=Font.GOALVIEW_NAME,
-            bg=Theme.BACKGROUND_PRIMARY
+            font=core.ui.font.GOALVIEW_NAME,
+            bg=core.ui.theme.BACKGROUND_PRIMARY
         )
         self.goal_label.pack(
             fill=tk.X,
@@ -28,12 +28,14 @@ class SideBar(tk.Frame):
         super().__init__(master)
 
         self.configure(
-            bg=Theme.BACKGROUND_SECONDARY,
+            bg=core.ui.theme.BACKGROUND_SECONDARY,
             width=230
         )
 
-        self.goals = Window.app().get_data('goals')
-        pprint(self.goals)
+        self.goals = core.App.get_data('goals')
+
+        for goal in self.goals:
+            print(goal['name'])
 
         # self.search_entry = SearchEntry(
         #     self,
@@ -52,7 +54,7 @@ class MainPage(tk.Frame):
         super().__init__(master)
 
         self.configure(
-            bg=Theme.BACKGROUND_PRIMARY
+            bg=core.ui.theme.BACKGROUND_PRIMARY
         )
 
         self.side_bar = SideBar(self)

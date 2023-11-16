@@ -1,11 +1,9 @@
-from core.ui import Window
-from core.handlers import DataHandler
+import core
 from functools import reduce
 from operator import getitem
 
 
 class App:
-
     _instance = None
     data_path = 'data/data.json'
     data = None
@@ -16,13 +14,14 @@ class App:
         return App._instance
 
     def __init__(self):
-        self.data_handler = DataHandler(self)
+        self.data_handler = core.DataHandler(self)
         App.data = self.data_handler.load_data()
+        App.data = dict(App.data)
 
-        self.window = Window(self)
+        self.window = core.Window(self)
 
-    @classmethod
-    def get_data(cls, requested_data):
+    @staticmethod
+    def get_data(requested_data):
         if isinstance(requested_data, str):
             requested_data = (requested_data, )
         return reduce(getitem, requested_data, App.data)

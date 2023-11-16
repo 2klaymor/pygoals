@@ -1,5 +1,5 @@
 import tkinter as tk
-from core.ui.theme import (Theme, Font)
+import core
 
 
 class SearchEntry(tk.Entry):
@@ -14,9 +14,9 @@ class SearchEntry(tk.Entry):
                 self.bind(seq, self._switch_visibility_of_hint)
 
             self.configure(
-                fg=Theme.FONT_HINT,
-                bg=Theme.BACKGROUND_PRIMARY,
-                font=Font.SIDEBAR_SEARCH
+                fg=core.ui.theme.FONT_HINT,
+                bg=core.ui.theme.BACKGROUND_PRIMARY,
+                font=core.ui.font.SIDEBAR_SEARCH
             )
             self.insert(0, self.hint)
 
@@ -24,13 +24,13 @@ class SearchEntry(tk.Entry):
         if self.hint_visible:
             self.delete(0, tk.END)
             self.configure(
-                fg=Theme.FONT_PRIMARY
+                fg=core.ui.theme.FONT_PRIMARY
             )
             self.hint_visible = False
         elif not (self.get() or self.get() == self.hint):
             self.insert(0, self.hint)
             self.configure(
-                fg=Theme.FONT_HINT
+                fg=core.ui.theme.FONT_HINT
             )
             self.hint_visible = True
 
