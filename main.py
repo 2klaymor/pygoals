@@ -1,6 +1,7 @@
-import core
+from core.app import App
 
 
 if __name__ == '__main__':
-    app = core.App()
+    app = App()
     app.run()
+
