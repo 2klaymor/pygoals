@@ -24,22 +24,6 @@ class SideBar(tk.Frame):
 
         self.goalbutton_views = {}
 
-        # Search Entry
-        self.search_var = tk.StringVar()
-        self.search_entry = tk.Entry(
-            self,
-            bg=core.shared.theme.BACKGROUND_PRIMARY,
-            font=core.shared.font.SIDEBAR_PRIMARY,
-            borderwidth=6,
-            relief=core.shared.theme.RELIEF_ENTRY,
-            textvariable=self.search_var
-        )
-        self.search_entry.pack(
-            fill=tk.X,
-            padx=10,
-            pady=(10, 0)
-        )
-
         self.create_button = tk.Button(
             self,
             bg=core.shared.theme.BUTTON_ACCENT,
