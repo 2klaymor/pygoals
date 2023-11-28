@@ -1,26 +1,26 @@
 SIDEBAR_PRIMARY = (
-    'Helvetica',
+    'Arial',
     13
 )
 
 SIDEBAR_PRIMARY_BOLD = (
-    'Helvetica',
+    'Arial',
     13,
     'bold'
 )
 
 GOALPAGE_LABEL = (
-    'Helvetica',
+    'Arial',
     16,
     'bold'
 )
 
 GOALPAGE_CONTENT = (
-    'Helvetica',
+    'Arial',
     13
 )
 
 GOALPAGE_TASK = (
-    'Helvetica',
+    'Arial',
     13
 )
