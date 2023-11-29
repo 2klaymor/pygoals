@@ -3,6 +3,7 @@ import tkinter as tk
 import core.shared.theme
 import core.shared.font
 import core.shared.general
+from core.utils.resourcewrapper import resource_path
 from core.controllers.goalcontroller import GoalController
 from core.views.goalbuttonview import GoalButtonView
 from core.views.goalpageview import GoalPageView
@@ -130,6 +131,7 @@ class Window(tk.Tk):
 
         self.title(f'{core.shared.general.APP_NAME} {core.shared.general.APP_VER}')
         self.geometry(f'{core.shared.general.DEFAULT_WIDTH}x{core.shared.general.DEFAULT_HEIGHT}')
+        self.iconbitmap(resource_path(core.shared.general.ICON))
         self.minsize(core.shared.general.MIN_WIDTH, core.shared.general.MIN_HEIGHT)
         self.update()
 
